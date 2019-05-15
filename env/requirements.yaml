@@ -7,3 +7,6 @@ dependencies:
   version: 2.3.89
   repository: http://chartmuseum.jenkins-x.io
   alias: cleanup
+- name: prometheus
+  version: 8.11.2
+  repository: https://kubernetes-charts.storage.googleapis.com
