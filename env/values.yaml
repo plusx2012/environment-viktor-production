@@ -19,7 +19,7 @@ expose:
   - --v
   - 4
   config:
-    domain: dockerflow.com
+    domain: 35.237.214.0.nip.io
     exposer: Ingress
     http: "true"
 jenkins:
