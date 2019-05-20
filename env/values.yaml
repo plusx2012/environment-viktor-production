@@ -34,13 +34,15 @@ prometheus:
     configFromSecret: alertmanager
     ingress:
       annotations:
-        kubernetes.io/tls-acme: "true"
+        kubernetes.io/ingress.class: "nginx"
+        certmanager.k8s.io/issuer: "letsencrypt-prod"
+        certmanager.k8s.io/acme-challenge-type: http01
       enabled: true
       hosts:
-      - alertmanager2.dockerflow.com
+      - alertmanager.dockerflow.com
       tls:
       - hosts:
-        - alertmanager2.dockerflow.com
+        - alertmanager.dockerflow.com
         secretName: letsencrypt-secret-alertmanager
     resources:
       limits:
@@ -74,10 +76,10 @@ prometheus:
         kubernetes.io/tls-acme: "true"
       enabled: true
       hosts:
-      - prometheus2.dockerflow.com
+      - prometheus.dockerflow.com
       tls:
       - hosts:
-        - prometheus2.dockerflow.com
+        - prometheus.dockerflow.com
         secretName: letsencrypt-secret-prometheus
     resources:
       limits:

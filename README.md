@@ -10,4 +10,7 @@ cat alertmanager.yaml \
 
 kubectl -n cd-production \
     apply -f alertmanager-secret.yaml
+
+kubectl -n cd-production \
+    apply -f k8s/issuer.yaml
 ```
