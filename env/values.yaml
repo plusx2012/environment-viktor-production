@@ -190,9 +190,9 @@ prometheus:
             description: At least one Pod uses much less memory than it reserved
             summary: Reserved memory is too high
           expr: sum(label_join(container_memory_usage_bytes{namespace!="kube-system",
-            namespace!="ingress-nginx", container_name!=""}, "pod", ",", "pod_name"))
-            by (pod) / sum(kube_pod_container_resource_requests_memory_bytes{namespace!="kube-system"})
-            by (pod) < 0.5 and sum(kube_pod_container_resource_requests_memory_bytes{namespace!="kube-system"})
+            namespace!="ingress-nginx", namespace!="cd", container_name!=""}, "pod", ",", "pod_name"))
+            by (pod) / sum(kube_pod_container_resource_requests_memory_bytes{namespace!="kube-system", namespace!="cd"})
+            by (pod) < 0.5 and sum(kube_pod_container_resource_requests_memory_bytes{namespace!="kube-system", namespace!="cd"})
             by (pod) > 5.25e+06
           for: 6h
           labels:
@@ -214,10 +214,10 @@ prometheus:
           annotations:
             description: At least one Pod uses much less CPU than it reserved
             summary: Reserved CPU is too high
-          expr: sum(label_join(rate(container_cpu_usage_seconds_total{namespace!="kube-system",
+          expr: sum(label_join(rate(container_cpu_usage_seconds_total{namespace!="kube-system", namespace!="cd",
             pod_name!=""}[5m]), "pod", ",", "pod_name")) by (pod) / sum(kube_pod_container_resource_requests_cpu_cores{namespace!="kube-system",
-            namespace!="ingress-nginx"}) by (pod) < 0.5 and sum(kube_pod_container_resource_requests_cpu_cores{namespace!="kube-system",
-            namespace!="ingress-nginx"}) by (pod) > 0.005
+            namespace!="ingress-nginx", namespace!="cd"}) by (pod) < 0.5 and sum(kube_pod_container_resource_requests_cpu_cores{namespace!="kube-system",
+            namespace!="ingress-nginx", namespace!="cd"}) by (pod) > 0.005
           for: 6h
           labels:
             frequency: low
