@@ -1,8 +1,8 @@
 env:
 - name: DEPLOY_NAMESPACE
-  value: jx-production
+  value: cd-production
 pipelineConfig:
   env:
   - name: DEPLOY_NAMESPACE
-    value: jx-production
+    value: cd-production
   pipelines: {}
