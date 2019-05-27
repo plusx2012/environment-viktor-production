@@ -1,4 +1,3 @@
-# default-environment-charts
 The default git repository used when creating new GitOps based Environments
 
 ```bash
@@ -14,4 +13,5 @@ kubectl -n cd-production \
 kubectl -n cd-production \
     apply -f k8s/issuer.yaml
 ```
+
 
